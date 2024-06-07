@@ -1,14 +1,13 @@
 import functools
-import logging
 import time
 from typing import Any, Callable
 
 
 def retry(
-    rate_limit_exception: type[Exception]= Exception, backoff_increment: int = 5, retries: int = 5, logger: logging.Logger = None
+    rate_limit_exception: type[Exception]= Exception, backoff_increment: int = 5, retries: int = 5
 ) -> Callable:
     """
-    Decorator to retry a function if it raises a `rate_limit_exception`.
+    Decorator to retry a function if it raises a custom exception.
     """
 
     def _outer_wrapper(func: Callable) -> Callable:
@@ -19,7 +18,7 @@ def retry(
                 try:
                     return func(*args, **kwargs)
                 except rate_limit_exception:
-                    logger.debug("Rate limited, backing off on attempt", attempt + 1)
+                    print(f"Attempt {attempt + 1} failed. Retrying in {current_backoff} seconds.")
                     time.sleep(current_backoff)
                     current_backoff += backoff_increment
 

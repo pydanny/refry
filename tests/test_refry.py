@@ -8,3 +8,11 @@ def test_refry_simple():
         return True
     
     check()
+
+
+def test_refry_rate_division():
+
+    @refry.retry(ZeroDivisionError, backoff_increment=1, retries=3)
+    def function_with_bad_division():
+        1 / 0
+    function_with_bad_division()
