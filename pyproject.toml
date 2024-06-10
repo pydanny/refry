@@ -23,9 +23,11 @@ managed = true
 dev-dependencies = [
     "ruff>=0.4.8",
     "pytest>=8.2.2",
+    "mypy>=1.10.0",
 ]
 
 [tool.rye.scripts]
+format = "ruff format . --fix && ruff check ."
 test = "pytest ."
 
 [tool.hatch.metadata]
