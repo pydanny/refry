@@ -39,3 +39,26 @@ def function_with_bad_division():
 
 function_with_bad_division()
 ```
+
+## Development
+
+For development this project uses [rye](https://rye.astral.sh/) to manage dependencies, environment, and publishing to pypi. Once you've [installed the tool](https://rye.astral.sh/guide/installation/), clone the project and follow these instructions.
+
+```
+cd refry/
+rye sync
+```
+
+The `rye sync` will set up the local `.venv` folder. 
+
+Running tests:
+
+```
+rye run tests
+```
+
+Formatting the code:
+
+```
+rye run format
+```
