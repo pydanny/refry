@@ -35,7 +35,7 @@ class TestRefry(unittest.TestCase):
         # Assert that the function returns success after retries
         self.assertEqual(succeeds_after_two_failures(), "success")
         # Assert that the function was attempted the correct number of times
-        self.assertEqual(attempts, 3)
+        self.assertEqual(attempts, RETRIES)
 
     def test_retry_exhausted(self) -> None:
         """
