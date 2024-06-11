@@ -67,4 +67,14 @@ rye run format
 ## Contributors 
 
 <!-- readme: contributors -start -->
+<table>
+<tr>
+    <td align="center">
+        <a href="https://github.com/pydanny">
+            <img src="https://avatars.githubusercontent.com/u/62857?v=4" width="100;" alt="pydanny"/>
+            <br />
+            <sub><b>Daniel Roy Greenfeld</b></sub>
+        </a>
+    </td></tr>
+</table>
 <!-- readme: contributors -end -->
