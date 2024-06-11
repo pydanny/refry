@@ -75,13 +75,6 @@ rye run format
             <br />
             <sub><b>Daniel Roy Greenfeld</b></sub>
         </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/rjvitorino">
-            <img src="https://avatars.githubusercontent.com/u/2514072?v=4" width="100;" alt="rjvitorino"/>
-            <br />
-            <sub><b>Ricardo Vitorino</b></sub>
-        </a>
     </td></tr>
 </table>
 <!-- readme: contributors -end -->
