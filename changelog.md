@@ -1,5 +1,6 @@
 # Changelog
 
+* Remove contributors GH action. PR [#31](https://github.com/pydanny/refry/pull/31) by [@pydanny](https://github.com/pydanny).
 * docs(contributor): contributors readme action update. PR [#29](https://github.com/pydanny/refry/pull/29) by [@pydanny](https://github.com/pydanny).
 * docs(contributor): contributors readme action update. PR [#25](https://github.com/pydanny/refry/pull/25) by [@pydanny](https://github.com/pydanny).
 * docs(contributor): contributors readme action update. PR [#24](https://github.com/pydanny/refry/pull/24) by [@pydanny](https://github.com/pydanny).
