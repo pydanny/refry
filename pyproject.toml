@@ -1,6 +1,6 @@
 [project]
 name = "refry"
-version = "0.1.0"
+version = "0.2.0"
 description = "Refry is a modern, maintained, typed easy-to-use retry decorator."
 authors = [
     { name = "Daniel Roy Greenfeld", email = "daniel@feldroy.com" }
