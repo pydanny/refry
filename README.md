@@ -82,7 +82,6 @@ rye run format
             <br />
             <sub><b>Ricardo Vitorino</b></sub>
         </a>
-    </td>
-</tr>
+    </td></tr>
 </table>
 <!-- readme: contributors -end -->
