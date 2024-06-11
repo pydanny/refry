@@ -1,5 +1,6 @@
 # Changelog
 
+* docs(contributor): contributors readme action update. PR [#25](https://github.com/pydanny/refry/pull/25) by [@pydanny](https://github.com/pydanny).
 * docs(contributor): contributors readme action update. PR [#24](https://github.com/pydanny/refry/pull/24) by [@pydanny](https://github.com/pydanny).
 * docs(contributor): contributors readme action update. PR [#20](https://github.com/pydanny/refry/pull/20) by [@pydanny](https://github.com/pydanny).
 * Add missing changelog module. PR [#16](https://github.com/pydanny/refry/pull/16) by [@pydanny](https://github.com/pydanny).
