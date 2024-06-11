@@ -66,7 +66,7 @@ rye run format
 
 ## Contributors 
 
-<!-- readme: contributors -start -->
+
 <table>
 <tr>
     <td align="center">
@@ -84,4 +84,4 @@ rye run format
         </a>
     </td></tr>
 </table>
-<!-- readme: contributors -end -->
+
