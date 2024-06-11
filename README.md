@@ -86,6 +86,19 @@ function_with_custom_logic()
 * `backoff_increment`: The delay increment in seconds between retries. Default value is `5` seconds.
 * `retries`: The number of retry attempts. Default value is `5`.
 
+---
+
+## Comparison with Previous Implementations
+
+Refry is designed to be a modern, maintained, and typed easy-to-use retry decorator.
+Here are some comparisons with other popular retry libraries:
+
+* **Tenacity**: [Tenacity](https://pypi.org/project/tenacity/) is a highly configurable retry library for Python. It provides extensive options for backoff strategies, custom retry conditions, and logging. However, Tenacity's flexibility can make it more complex to use for simple retry needs.
+* **Retrying**: [Retrying](https://pypi.org/project/retrying/) is another popular retry library that offers simplicity and ease of use. However, it is no longer actively maintained, which can be a concern for projects requiring long-term support.
+* **Built-in Solutions**: Frameworks like Django and Flask provide built-in retry mechanisms for certain operations (e.g., database retries). These are often tightly coupled with the framework and may not be suitable for general-purpose retry needs outside of the framework's context.
+
+---
+
 ## Development Setup
 
 For development, this project uses [rye](https://rye.astral.sh/) to manage dependencies, environment, and publishing to pypi. 
