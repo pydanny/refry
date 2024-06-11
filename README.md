@@ -8,13 +8,13 @@ Refry is a modern, maintained, typed easy-to-use retry decorator.
 
 ## Installation
 
-```
+```bash
 pip install refry
 ```
 
 ## Usage
 
-Basic usage
+### Basic usage
 
 ```python
 import refry
@@ -29,20 +29,68 @@ def function_with_problem():
 function_with_problem()
 ```
 
-With custom exception:
+### Retry with custom Exception
 
 ```python
-@refry.retry(ZeroDivisionError)
+@refry.retry(rate_limit_exception=ZeroDivisionError)
 def function_with_bad_division():
     1 / 0
-
 
 function_with_bad_division()
 ```
 
-## Development
+### Advanced usage: custom backoff and retry count
 
-For development this project uses [rye](https://rye.astral.sh/) to manage dependencies, environment, and publishing to pypi. Once you've [installed the tool](https://rye.astral.sh/guide/installation/), clone the project and follow these instructions.
+```python
+@refry.retry(backoff_increment=10, retries=3)
+def function_with_custom_backoff():
+    raise Exception('Something bad happens here')
+
+# This will be attempted 3 times, with a delay increasing by 10 seconds each time.
+function_with_custom_backoff()
+```
+
+### Asynchronous function support
+
+```python
+import asyncio
+import refry
+
+@refry.retry
+async def async_function_with_problem():
+    raise Exception('Something bad happens here')
+
+# This will be attempted 5 times, each time with a delay increasing by 5 seconds.
+await async_function_with_problem()
+```
+
+### Retry with custom logic
+
+```python
+import refry
+
+def custom_logic(exception):
+    # Custom logic to determine if a retry should occur
+    return isinstance(exception, ZeroDivisionError)
+
+@refry.retry(rate_limit_exception=ZeroDivisionError, retries=3)
+def function_with_custom_logic():
+    1 / 0
+
+function_with_custom_logic()
+```
+
+### Arguments for `refry.retry()`
+
+* `rate_limit_exception`: Types of exception to trigger a retry. Default value is [`Exception`].
+* `backoff_increment`: The delay increment in seconds between retries. Default value is `5` seconds.
+* `retries`: The number of retry attempts. Default value is `5`.
+
+## Development Setup
+
+For development, this project uses [rye](https://rye.astral.sh/) to manage dependencies, environment, and publishing to pypi. 
+
+Once you've [installed the tool](https://rye.astral.sh/guide/installation/), clone the project and follow these instructions.
 
 ```bash
 cd refry/
@@ -63,9 +111,16 @@ Formatting the code:
 rye run format
 ```
 
+## Contribution Guidelines
+
+1. Fork the repository.
+2. Create a new branch for your feature or bugfix.
+3. Write tests to cover your changes.
+4. Run all tests to ensure no regressions.
+5. Open a pull request with a detailed description of your changes.
+
 
 ## Contributors 
-
 
 <table>
 <tr>
