@@ -1,10 +1,6 @@
 # Changelog
 
 * Remove contributors GH action. PR [#31](https://github.com/pydanny/refry/pull/31) by [@pydanny](https://github.com/pydanny).
-* docs(contributor): contributors readme action update. PR [#29](https://github.com/pydanny/refry/pull/29) by [@pydanny](https://github.com/pydanny).
-* docs(contributor): contributors readme action update. PR [#25](https://github.com/pydanny/refry/pull/25) by [@pydanny](https://github.com/pydanny).
-* docs(contributor): contributors readme action update. PR [#24](https://github.com/pydanny/refry/pull/24) by [@pydanny](https://github.com/pydanny).
-* docs(contributor): contributors readme action update. PR [#20](https://github.com/pydanny/refry/pull/20) by [@pydanny](https://github.com/pydanny).
 * Add missing changelog module. PR [#16](https://github.com/pydanny/refry/pull/16) by [@pydanny](https://github.com/pydanny).
 * Adds unit tests for retry decorator. PR [#8](https://github.com/pydanny/refry/pull/8) by [@rjvitorino](https://github.com/rjvitorino).
 * Add latest-changes GH action. PR [#13](https://github.com/pydanny/refry/pull/13) by [@pydanny](https://github.com/pydanny).
