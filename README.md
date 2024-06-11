@@ -62,3 +62,9 @@ Formatting the code:
 ```
 rye run format
 ```
+
+
+## Contributors 
+
+<!-- readme: contributors -start -->
+<!-- readme: contributors -end -->
