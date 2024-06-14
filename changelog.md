@@ -1,5 +1,6 @@
 # Changelog
 
+* Add CODE_OF_CONDUCT.md. PR [#34](https://github.com/pydanny/refry/pull/34) by [@rjvitorino](https://github.com/rjvitorino).
 * docs(readme): add implementation comparison. PR [#33](https://github.com/pydanny/refry/pull/33) by [@rjvitorino](https://github.com/rjvitorino).
 * docs(readme): include arguments usage. PR [#32](https://github.com/pydanny/refry/pull/32) by [@rjvitorino](https://github.com/rjvitorino).
 * Remove contributors GH action. PR [#31](https://github.com/pydanny/refry/pull/31) by [@pydanny](https://github.com/pydanny).
