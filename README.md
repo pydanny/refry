@@ -6,11 +6,15 @@
 
 Refry is a modern, maintained, typed easy-to-use retry decorator.
 
+---
+
 ## Installation
 
 ```bash
 pip install refry
 ```
+
+---
 
 ## Usage
 
@@ -124,7 +128,17 @@ Formatting the code:
 rye run format
 ```
 
+---
+
 ## Contribution Guidelines
+
+### Code of Conduct
+
+This project and everyone participating in it is governed by refry's [Code of Conduct](CODE_OF_CONDUCT.md). 
+
+By participating, you are expected to uphold this code. Please report unacceptable behavior to [@pydanny](https://github.com/pydanny).
+
+### How to contribute
 
 1. Fork the repository.
 2. Create a new branch for your feature or bugfix.
@@ -132,6 +146,7 @@ rye run format
 4. Run all tests to ensure no regressions.
 5. Open a pull request with a detailed description of your changes.
 
+---
 
 ## Contributors 
 
