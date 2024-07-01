@@ -140,11 +140,15 @@ By participating, you are expected to uphold this code. Please report unacceptab
 
 ### How to contribute
 
-1. Fork the repository.
-2. Create a new branch for your feature or bugfix.
-3. Write tests to cover your changes.
-4. Run all tests to ensure no regressions.
-5. Open a pull request with a detailed description of your changes.
+Thank you for considering contributing to refry! We welcome contributions from everyone.
+
+Please read our [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines on how to contribute to this project, including how to report bugs, suggest enhancements, and submit pull requests. 
+
+1. **Fork the repository.**
+2. **Create a new branch** from the `main` branch.
+3. **Commit your changes** to your branch.
+4. **Push your changes** to your fork.
+5. **Submit a pull request** from your fork to the `main` branch of the original repository.
 
 ---
 
