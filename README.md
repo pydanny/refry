@@ -4,6 +4,8 @@
 >
 > What's even better than twice cooked fries is triple cooked fries!
 
+![Refry basic usage example](https://github.com/rjvitorino/refry/assets/2514072/25118d3a-8192-43fc-8bf5-24fce6798606)
+
 Refry is a modern, maintained, typed easy-to-use retry decorator.
 
 ---
