@@ -84,11 +84,31 @@ def function_with_custom_logic():
 function_with_custom_logic()
 ```
 
+### Retry Decorator with Backoff and Jitter
+
+The `@retry` decorator allows you to automatically retry a function if it raises specific exceptions.
+It supports **different backoff strategies** (sequential, logarithmic, exponential) and **optional jitter** to handle the [thundering herd problem](http://www.catb.org/jargon/html/T/thundering-herd-problem.html).
+
+
+```python
+import refry
+
+@refry.retry(rate_limit_exception=Exception, backoff_increment=2, retries=5, backoff_type="sequential", jitter=True)
+def function_with_problem():
+    raise Exception('Something bad happens here')
+
+# Call the function to see the retry mechanism in action
+function_with_problem()
+```
+
+
 ### Arguments for `refry.retry()`
 
 * `rate_limit_exception`: Types of exception to trigger a retry. Default value is [`Exception`].
 * `backoff_increment`: The delay increment in seconds between retries. Default value is `5` seconds.
 * `retries`: The number of retry attempts. Default value is `5`.
+* `backoff_type`: The backoff strategy to use. Can be one of `"sequential"`, `"logarithmic"`, or `"exponential"`. Defaults to `"sequential"`.
+* `jitter`: If `True`, adds a random amount of time to each backoff interval to prevent thundering herd problem. Defaults to `False`.
 
 ---
 
