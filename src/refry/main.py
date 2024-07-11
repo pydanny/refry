@@ -1,4 +1,5 @@
 import functools
+import logging
 import math
 import random
 import time
@@ -6,6 +7,9 @@ from typing import Any
 from typing import Callable
 from typing import Type
 
+# Configure the logger
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 def retry(
     backoff_increment: int = 5,
@@ -32,12 +36,17 @@ def retry(
             for attempt in range(retries):
                 try:
                     return func(*args, **kwargs)
-                except rate_limit_exception:
+                except rate_limit_exception as exception:
                     current_backoff = calculate_backoff(attempt)
-                    print(
-                        f"Attempt {attempt + 1} failed. Retrying in {current_backoff} seconds."
+                    logger.info(
+                        f"Attempt {attempt + 1} failed with exception: {exception}. "
+                        f"Retrying in {current_backoff:.2f} seconds."
                     )
                     time.sleep(current_backoff)
+            # If all retries fail, raise the last exception
+            raise rate_limit_exception(
+                f"All {retries} retries failed for function {func.__name__}."
+            )
 
         return _wrapper
 
