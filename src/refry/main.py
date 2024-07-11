@@ -33,6 +33,10 @@ def retry(
     def _outer_wrapper(func: Callable) -> Callable:
         @functools.wraps(func)
         def _wrapper(*args: list[Any], **kwargs: list[Any]) -> Any:
+            logger.info(
+                f"Applying retry decorator with backoff_type='{backoff_type}', "
+                f"backoff_increment={backoff_increment}, jitter={jitter}, retries={retries}"
+            )
             for attempt in range(retries):
                 try:
                     return func(*args, **kwargs)
@@ -43,10 +47,12 @@ def retry(
                         f"Retrying in {current_backoff:.2f} seconds."
                     )
                     time.sleep(current_backoff)
-            # If all retries fail, raise the last exception
-            raise rate_limit_exception(
-                f"All {retries} retries failed for function {func.__name__}."
+            # If all retries fail, log the final failure and raise the exception without additional message
+            logger.error(
+                f"All {retries} retries failed for function {func.__name__}.",
+                exc_info=True
             )
+            raise rate_limit_exception
 
         return _wrapper
 
