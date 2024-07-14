@@ -11,6 +11,7 @@ from typing import Type
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+
 def retry(
     backoff_increment: int = 5,
     backoff_type: str = "sequential",
@@ -53,7 +54,7 @@ def retry(
             # If all retries fail, log the final failure and raise the exception without additional message
             logger.error(
                 f"All {retries} retries failed for function {func.__name__}.",
-                exc_info=True
+                exc_info=True,
             )
             raise rate_limit_exception
 
