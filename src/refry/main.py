@@ -25,7 +25,8 @@ def retry(
             "exponential": (2**attempt) * backoff_increment,
         }
         backoff = backoff_strategies.get(
-            backoff_type, backoff_increment * (attempt + 1)
+            # Default is the sequential backoff strategy
+            backoff_type, backoff_strategies['sequential']
         )
         return backoff + random.uniform(0, backoff_increment) if jitter else backoff
 
