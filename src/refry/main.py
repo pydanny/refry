@@ -7,8 +7,7 @@ from typing import Any
 from typing import Callable
 from typing import Type
 
-# Configure the logger
-logging.basicConfig(level=logging.INFO)
+# Logger's log level is configurable with `log_level`
 logger = logging.getLogger(__name__)
 
 
@@ -18,6 +17,7 @@ def retry(
     jitter: bool = False,
     rate_limit_exception: Type[Exception] = Exception,
     retries: int = 5,
+    log_level: int = logging.INFO,
 ) -> Callable:
     """
     Decorator to retry a function if it raises a custom exception.
@@ -37,18 +37,21 @@ def retry(
     def _outer_wrapper(func: Callable) -> Callable:
         @functools.wraps(func)
         def _wrapper(*args: list[Any], **kwargs: list[Any]) -> Any:
-            logger.info(
+            logger.setLevel(log_level)
+            logger.log(
+                log_level,
                 f"Applying retry decorator with backoff_type='{backoff_type}', "
-                f"backoff_increment={backoff_increment}, jitter={jitter}, retries={retries}"
+                f"backoff_increment={backoff_increment}, jitter={jitter}, retries={retries}",
             )
             for attempt in range(retries):
                 try:
                     return func(*args, **kwargs)
                 except rate_limit_exception as exception:
                     current_backoff = calculate_backoff(attempt)
-                    logger.info(
+                    logger.log(
+                        log_level,
                         f"Attempt {attempt + 1} failed with exception: {exception}. "
-                        f"Retrying in {current_backoff:.2f} seconds."
+                        f"Retrying in {current_backoff:.2f} seconds.",
                     )
                     time.sleep(current_backoff)
             # If all retries fail, log the final failure and raise the exception without additional message
