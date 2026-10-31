@@ -43,10 +43,12 @@ def retry(
                 f"Applying retry decorator with backoff_type='{backoff_type}', "
                 f"backoff_increment={backoff_increment}, jitter={jitter}, retries={retries}",
             )
+            last_exception = None
             for attempt in range(retries):
                 try:
                     return func(*args, **kwargs)
                 except rate_limit_exception as exception:
+                    last_exception = exception
                     current_backoff = calculate_backoff(attempt)
                     logger.log(
                         log_level,
@@ -57,8 +59,16 @@ def retry(
             # If all retries fail, log the final failure and raise the exception without additional message
             logger.error(
                 f"All {retries} retries failed for function {func.__name__}.",
-                exc_info=True,
+                exc_info=(
+                    type(last_exception),
+                    last_exception,
+                    last_exception.__traceback__,
+                )
+                if last_exception is not None
+                else True,
             )
+            if last_exception is not None:
+                raise last_exception
             raise rate_limit_exception
 
         return _wrapper
