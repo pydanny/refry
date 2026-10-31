@@ -45,6 +45,9 @@ def function_with_bad_division():
 function_with_bad_division()
 ```
 
+If every attempt fails, the last exception raised by the function is re-raised,
+preserving its type, message, and custom attributes.
+
 ### Advanced usage: custom backoff and retry count
 
 ```python
