@@ -108,6 +108,11 @@ function_with_problem()
 
 ### Arguments for `refry.retry()`
 
+The decorator preserves the wrapped function's parameter and return types for
+type checkers, including methods and overloaded functions. For example, a
+function returning `str` still returns `str` when decorated with `@refry.retry()`;
+an incompatible argument or assignment is reported by the type checker.
+
 * `rate_limit_exception`: Types of exception to trigger a retry. Default value is [`Exception`].
 * `backoff_increment`: The delay increment in seconds between retries. Default value is `5` seconds.
 * `retries`: The number of retry attempts. Default value is `5`.

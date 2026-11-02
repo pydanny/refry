@@ -1,1 +1,1 @@
-from .main import retry
+from .main import retry as retry
