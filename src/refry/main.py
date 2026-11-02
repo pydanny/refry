@@ -6,6 +6,10 @@ import time
 from typing import Any
 from typing import Callable
 from typing import Type
+from typing import TypeVar
+from typing import cast
+
+F = TypeVar("F", bound=Callable[..., Any])
 
 # Logger's log level is configurable with `log_level`
 logger = logging.getLogger(__name__)
@@ -18,7 +22,7 @@ def retry(
     rate_limit_exception: Type[Exception] = Exception,
     retries: int = 5,
     log_level: int = logging.INFO,
-) -> Callable:
+) -> Callable[[F], F]:
     """
     Decorator to retry a function if it raises a custom exception.
     """
@@ -34,9 +38,9 @@ def retry(
         )
         return backoff + random.uniform(0, backoff_increment) if jitter else backoff
 
-    def _outer_wrapper(func: Callable) -> Callable:
+    def _outer_wrapper(func: F) -> F:
         @functools.wraps(func)
-        def _wrapper(*args: list[Any], **kwargs: list[Any]) -> Any:
+        def _wrapper(*args: Any, **kwargs: Any) -> Any:
             logger.setLevel(log_level)
             logger.log(
                 log_level,
@@ -61,6 +65,6 @@ def retry(
             )
             raise rate_limit_exception
 
-        return _wrapper
+        return cast(F, _wrapper)
 
     return _outer_wrapper
