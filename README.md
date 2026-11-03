@@ -25,7 +25,7 @@ pip install refry
 ```python
 import refry
 
-@refry.retry
+@refry.retry()
 def function_with_problem():
     raise Exception('Something bad happens here')
 
@@ -56,19 +56,11 @@ def function_with_custom_backoff():
 function_with_custom_backoff()
 ```
 
-### Asynchronous function support
+### Asynchronous functions
 
-```python
-import asyncio
-import refry
-
-@refry.retry
-async def async_function_with_problem():
-    raise Exception('Something bad happens here')
-
-# This will be attempted 5 times, each time with a delay increasing by 5 seconds.
-await async_function_with_problem()
-```
+Refry retries synchronous function calls. It does not await coroutine functions,
+so exceptions raised when awaiting an `async def` function are not retried.
+Use an async-aware retry mechanism for asynchronous functions instead.
 
 ### Retry with custom logic
 
