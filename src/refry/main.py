@@ -7,7 +7,7 @@ from typing import Any
 from typing import Callable
 from typing import Type
 
-# Logger's log level is configurable with `log_level`
+# Message severity is configurable with `log_level`.
 logger = logging.getLogger(__name__)
 
 
@@ -37,7 +37,6 @@ def retry(
     def _outer_wrapper(func: Callable) -> Callable:
         @functools.wraps(func)
         def _wrapper(*args: list[Any], **kwargs: list[Any]) -> Any:
-            logger.setLevel(log_level)
             logger.log(
                 log_level,
                 f"Applying retry decorator with backoff_type='{backoff_type}', "
