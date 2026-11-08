@@ -55,8 +55,12 @@ def retry(
                     )
                     time.sleep(current_backoff)
             # If all retries fail, log the final failure and raise the exception without additional message
+            try:
+                func_name = func.__name__
+            except AttributeError:
+                func_name = type(func).__name__
             logger.error(
-                f"All {retries} retries failed for function {func.__name__}.",
+                f"All {retries} retries failed for function {func_name}.",
                 exc_info=True,
             )
             raise rate_limit_exception

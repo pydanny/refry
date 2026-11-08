@@ -35,6 +35,10 @@ def function_with_problem():
 function_with_problem()
 ```
 
+Callables such as `functools.partial` instances can also be wrapped with
+`refry.retry(...)(callable)`. When a callable has no `__name__`, the final
+exhaustion log identifies it by its class name.
+
 ### Retry with custom Exception
 
 ```python
